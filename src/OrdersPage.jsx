@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
 const OrdersPage = () => {
     const [orders, setOrders] = useState([]);
@@ -14,8 +13,9 @@ const OrdersPage = () => {
 
     const fetchOrders = async () => {
         try {
-            const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/orders`);
-            setOrders(response.data);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/orders`);
+            const data = await response.json();
+            setOrders(data);
             setLoading(false);
         } catch (error) {
             console.error('Error fetching orders:', error);
@@ -25,8 +25,10 @@ const OrdersPage = () => {
 
     const handleStatusUpdate = async (orderId, newStatus) => {
         try {
-            await axios.patch(`http://localhost:5000/api/orders/${orderId}/status`, {
-                status: newStatus
+            await fetch(`${import.meta.env.VITE_API_URL}/api/orders/${orderId}/status`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ status: newStatus })
             });
 
             setOrders(orders.map(order =>
@@ -252,3 +254,4 @@ const OrdersPage = () => {
 };
 
 export default OrdersPage;
+
