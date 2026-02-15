@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { API_URL } from './config';
+import { getImageUrl } from './utils/urlHelper';
 
 export default function MenuPage() {
   const [foods, setFoods] = useState([]);
@@ -173,7 +174,7 @@ export default function MenuPage() {
               {/* Image Display */}
               <div className="h-48 bg-slate-100 relative overflow-hidden">
                 <img
-                  src={item.image || 'https://via.placeholder.com/400x300?text=No+Image'}
+                  src={getImageUrl(item.image)}
                   alt={item.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                 />
