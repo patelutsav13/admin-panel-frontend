@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { API_URL } from './config';
-import { getImageUrl } from './utils/urlHelper';
+import { getImageUrl } from './urlHelper';
 
 export default function MenuPage() {
   const [foods, setFoods] = useState([]);
