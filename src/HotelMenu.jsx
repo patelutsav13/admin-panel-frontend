@@ -177,6 +177,7 @@
 // }
 
 import React, { useState, useEffect } from 'react';
+import { API_URL } from './config';
 
 export default function HotelMenu() {
   const [menuData, setMenuData] = useState({});
@@ -186,8 +187,8 @@ export default function HotelMenu() {
     const fetchData = async () => {
       try {
         const [categoriesRes, foodsRes] = await Promise.all([
-          fetch('http://localhost:5000/api/categories'),
-          fetch('http://localhost:5000/api/foods')
+          fetch(`${API_URL}/api/categories`),
+          fetch(`${API_URL}/api/foods`)
         ]);
 
         const categories = await categoriesRes.json();
@@ -273,22 +274,22 @@ export default function HotelMenu() {
                   {/* CATEGORY BACKGROUND IMAGE */}
                   <img
                     src={
-                        category.toLowerCase().includes('burger')
+                      category.toLowerCase().includes('burger')
                         ? 'https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&q=80'
                         : category.toLowerCase().includes('pizza')
-                        ? 'https://images.unsplash.com/photo-1604382355076-af4b0eb60143?auto=format&fit=crop&w=800&q=80'
-                        : category.toLowerCase().includes('drink')
-                        ? 'https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80'
-                        : category.toLowerCase().includes('desert')
-                        ? 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80'
-                        : category.toLowerCase().includes('southInd')
-                      ? 'https://images.unsplash.com/photo-1604908554027-3b6b3b4d7a1c?auto=format&fit=crop&w=800&q=80'
-                        : category.toLowerCase().includes('gujarti') || category.toLowerCase().includes('gujarati')
-                        ? 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80'
-                        : category.toLowerCase().includes('punjabi')
-                        ? 'https://images.unsplash.com/photo-1628294895950-9805252327bc?auto=format&fit=crop&w=800&q=80'
+                          ? 'https://images.unsplash.com/photo-1604382355076-af4b0eb60143?auto=format&fit=crop&w=800&q=80'
+                          : category.toLowerCase().includes('drink')
+                            ? 'https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80'
+                            : category.toLowerCase().includes('desert')
+                              ? 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80'
+                              : category.toLowerCase().includes('southInd')
+                                ? 'https://images.unsplash.com/photo-1604908554027-3b6b3b4d7a1c?auto=format&fit=crop&w=800&q=80'
+                                : category.toLowerCase().includes('gujarti') || category.toLowerCase().includes('gujarati')
+                                  ? 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80'
+                                  : category.toLowerCase().includes('punjabi')
+                                    ? 'https://images.unsplash.com/photo-1628294895950-9805252327bc?auto=format&fit=crop&w=800&q=80'
 
-                        : 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe'
+                                    : 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe'
                     }
                     alt={category}
                     className="absolute inset-0 w-full h-full object-cover opacity-30 rounded-2xl"
@@ -343,41 +344,41 @@ export default function HotelMenu() {
             </div>
 
             <p className="text-xl md:text-2xl text-orange-600 font-medium max-w-[400px] leading-relaxed">
-             📌301, Royal Estate Plaza, Satellite,<br />
+              📌301, Royal Estate Plaza, Satellite,<br />
               SG Highway, Ahmedabad
             </p>
 
             <div className="space-y-6 text-center">
               <h1 className="font-cursive text-4xl text-orange-600 tracking-wide">
-              Monday – Saturday
+                Monday – Saturday
               </h1>
               <p className="font-sans  font-bold  text-3xl text-white">
                 Time :
-              <span className="font-sans  font-bold  text-2xl text-white ml-2">
-                9:30 AM – 11:00 PM
-              </span>
-            </p>
+                <span className="font-sans  font-bold  text-2xl text-white ml-2">
+                  9:30 AM – 11:00 PM
+                </span>
+              </p>
 
-          <h1 className="font-cursive text-4xl text-orange-600 tracking-wide mt-8">
-            Sunday
-          </h1>
-          <p className="font-sans  font-bold text-3xl text-white">
-            Time :
-          <span className="font-sans  font-bold  text-2xl text-white ml-2">
-            10:00 AM – 11:00 PM
-          </span>
-        </p>
-      </div>
+              <h1 className="font-cursive text-4xl text-orange-600 tracking-wide mt-8">
+                Sunday
+              </h1>
+              <p className="font-sans  font-bold text-3xl text-white">
+                Time :
+                <span className="font-sans  font-bold  text-2xl text-white ml-2">
+                  10:00 AM – 11:00 PM
+                </span>
+              </p>
+            </div>
 
-<div className="mt-16 text-center">
-  <h1 className="font-header text-3xl md:text-4xl text-cyan-400 tracking-wider">
-    Orders Available for
-  </h1>
-  <h1 className="font-cursive text-4xl md:text-5xl text-orange-500 mt-2">
-    Marriages & Other Functions
-  </h1>
-</div>
-x
+            <div className="mt-16 text-center">
+              <h1 className="font-header text-3xl md:text-4xl text-cyan-400 tracking-wider">
+                Orders Available for
+              </h1>
+              <h1 className="font-cursive text-4xl md:text-5xl text-orange-500 mt-2">
+                Marriages & Other Functions
+              </h1>
+            </div>
+            x
 
             <a
               href="https://www.cappsarafoods.com"
@@ -395,4 +396,5 @@ x
     </div>
   );
 }
+
 
